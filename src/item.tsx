@@ -1,6 +1,6 @@
 import { List } from './types'
 
-function Item(el: List, deleteTodos: (id: string) => void) {
+function Item({el,deleteTodos}: {el: List, deleteTodos: (id: number) => void}) {
     return (
         <>
             <div><li>{el.title}</li></div>

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import Item from './Item.tsx'
+import Item from './item.tsx'
 import { List } from './types.ts'
 import './App.css'
 
@@ -19,7 +19,7 @@ function App() {
     setTodos([...todos, inputRef.current.value])
   };
   
-  function deleteTodo(id: string) {
+  function deleteTodo(id: number) {
     const newTodos = todos.filter((el: List) => el.id !== id);
     setTodos(newTodos);
   }
@@ -32,8 +32,8 @@ function App() {
     <>
       <div>
       {todos.map((el: List) => {
-          return <div>
-                  <Item key={el.id} el={el} deleteTodos={deleteTodo}/>
+          return <div key={el.id}>
+                  <Item  el={el} deleteTodos={deleteTodo}/>
                 </div>
           })}
 
