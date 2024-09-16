@@ -15,8 +15,16 @@ function App() {
     JSON.parse(localStorage.getItem('todos') ?? JSON.stringify(initialTodos)));
   const inputRef = useRef<any>(null);
 
-  const addTodoHandler = () => {
-    setTodos([...todos, inputRef.current.value])
+  const addTodoHandler = (l:React.FormEvent) => {
+    l.preventDefault();
+    if (inputRef.current){
+      const newList: List ={
+        id : Date.now(),
+        title : inputRef.current.value,
+      };
+    setTodos((simpleTodos)=> [...simpleTodos, newList]);
+    inputRef.current.value = '';
+  }
   };
   
   function deleteTodo(id: number) {
